@@ -1,7 +1,15 @@
-const correctAnswer = true;
+const questionList = [
+  "Are you a cat?",
+  "Are you a dog?",
+  "Are you a human?",
+  "Are you a robot?",
+];
+
+let questionIndex = 0;
+let correctAnswer = true;
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Do you like Javascript?";
+myQuestion.textContent = questionList[questionIndex];
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -25,19 +33,18 @@ function showAnswerIsCorrect() {
   const para = document.createElement("p");
   const node = document.createTextNode("Very good!");
   para.className = "correct";
-  para.appendChild(node);
-  document.body.appendChild(para);
+  para.append(node);
+  document.body.append(para);
   setNewQuestion();
-  disableButtons();
 }
 
 function showAnswerIsIncorrect() {
   const para = document.createElement("p");
   const node = document.createTextNode("Oh, why not?!");
   para.className = "incorrect";
-  para.appendChild(node);
-  document.body.appendChild(para);
-  setNewQuestion();
+  para.append(node);
+  document.body.append(para);
+  disableButtons();
 }
 
 function disableButtons() {
@@ -46,5 +53,15 @@ function disableButtons() {
 }
 
 function setNewQuestion() {
-  myQuestion.textContent = "Do you like CSS?";
+  questionIndex += 1;
+  myQuestion.textContent = questionList[questionIndex];
+  correctAnswer = false;
+  document.body.removeChild(document.querySelector("correct"));
+}
+
+function nextQuestion() {
+  questionIndex += 1;
+  const nextButton = document.createElement("p");
+  nextButton.textContent = "Next Question";
+  next.appendChild(nextButton);
 }
