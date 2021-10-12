@@ -1,3 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+body {
+  background-color: darkslategray;
+  color: rgba(248, 248, 255, 0.858);
+  text-align: center;
+  padding: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
+}
+
 .yes {
   background-color: green;
+}
+
+.no {
+  background-color: red;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
 }
