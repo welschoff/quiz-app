@@ -27,6 +27,8 @@ function showAnswerIsCorrect() {
   para.className = "correct";
   para.appendChild(node);
   document.body.appendChild(para);
+  setNewQuestion();
+  disableButtons();
 }
 
 function showAnswerIsIncorrect() {
@@ -35,4 +37,14 @@ function showAnswerIsIncorrect() {
   para.className = "incorrect";
   para.appendChild(node);
   document.body.appendChild(para);
+  setNewQuestion();
+}
+
+function disableButtons() {
+  yesButton.disabled = true;
+  noButton.disabled = true;
+}
+
+function setNewQuestion() {
+  myQuestion.textContent = "Do you like CSS?";
 }
