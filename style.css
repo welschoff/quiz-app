@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: darkslategray;
+  color: rgba(248, 248, 255, 0.858);
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.quizbox {
+  display: grid;
+  background: grey;
+  align-items: center;
+  justify-items: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  width: 20rem;
+  row-gap: 1rem;
+}
+
+.correct {
+  color: green;
+}
+
+.yes {
+  background: green;
+  padding: 0.5rem;
+}
+
+.no {
+  background: red;
+  padding: 0.5rem;
+}
+
+.next {
+  background: none;
+  text-decoration: underline;
+  color: white;
+}
+
+.incorrect {
+  color: red;
+}
