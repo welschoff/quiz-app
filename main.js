@@ -5,11 +5,39 @@ const questionList = [
   "Are you a robot?",
 ];
 
+const answers = [true, true, false, false];
+
 let questionIndex = 0;
-let correctAnswer = true;
+let correctAnswer = answers[questionIndex];
 
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = questionList[questionIndex];
+
+showProgress();
+
+function showProgress() {
+  const progressElement = document.querySelector(".progress");
+  progressElement.textContent = `Question ${questionIndex + 1}/${
+    questionList.length
+  }`;
+}
+
+const end = document.querySelector(".wrapper");
+
+function setNewQuestion() {
+  questionIndex += 1;
+  document.body.removeChild(document.querySelector(".correct"));
+  showProgress();
+  if (questionIndex < questionList.length) {
+    correctAnswer = answers[questionIndex];
+    myQuestion.textContent = questionList[questionIndex];
+  } else {
+    const finishQuiz = document.createElement("p");
+    finishQuiz.textContent = "Yay you made it!";
+    document.body.append(finishQuiz);
+    end.removeChild(document.querySelector(".quizbox"));
+  }
+}
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -35,7 +63,7 @@ function showAnswerIsCorrect() {
   para.className = "correct";
   para.append(node);
   document.body.append(para);
-  setNewQuestion();
+  setTimeout(setNewQuestion, 1000);
 }
 
 function showAnswerIsIncorrect() {
@@ -50,18 +78,4 @@ function showAnswerIsIncorrect() {
 function disableButtons() {
   yesButton.disabled = true;
   noButton.disabled = true;
-}
-
-function setNewQuestion() {
-  questionIndex += 1;
-  myQuestion.textContent = questionList[questionIndex];
-  correctAnswer = false;
-  document.body.removeChild(document.querySelector("correct"));
-}
-
-function nextQuestion() {
-  questionIndex += 1;
-  const nextButton = document.createElement("p");
-  nextButton.textContent = "Next Question";
-  next.appendChild(nextButton);
 }
